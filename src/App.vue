@@ -1,21 +1,25 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Hero from './components/Hero.vue'
+import Timeline from './components/Timeline.vue'
+import Skills from './components/Skills.vue'
+import Projects from './components/Projects.vue'
+import Certificates from './components/Certificates.vue'
+import Footer from './components/Footer.vue'
+import Contact from './components/Contact.vue'
 </script>
 
 <template>
-  <header class="bg-red-600 text-white p-6">
-    <h1 class="text-3xl font-bold">Benedict Matthew A. Arzola</h1>
-    <p class="text-lg">Associate UI/UX Software Engineer</p>
-  </header>
-  <main class="p-8">
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-2">About Me</h2>
-      <p>
-        Welcome to my portfolio! I'm passionate about building beautiful and functional web applications.
-      </p>
-    </section>
-    <!-- Add more sections for projects, skills, contact, etc. -->
-  </main>
+  <div class="bg-gray-900 text-white">
+    <Hero />
+    <Timeline />
+    <Skills />
+    <Projects />
+    <Certificates />
+    <Contact />
+    <Footer />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* Add any specific styles for the App component here */
+</style>
