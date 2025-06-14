@@ -3,7 +3,7 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header class="bg-red-600 text-white p-6 p-3">
+  <header class="bg-red-600 text-white p-6">
     <h1 class="text-3xl font-bold">Benedict Matthew A. Arzola</h1>
     <p class="text-lg">Associate UI/UX Software Engineer</p>
   </header>
