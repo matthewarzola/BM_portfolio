@@ -3,28 +3,19 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <header class="bg-red-600 text-white p-6 p-3">
+    <h1 class="text-3xl font-bold">Your Name</h1>
+    <p class="text-lg">Web Developer & Designer</p>
+  </header>
+  <main class="p-8">
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">About Me</h2>
+      <p>
+        Welcome to my portfolio! I'm passionate about building beautiful and functional web applications.
+      </p>
+    </section>
+    <!-- Add more sections for projects, skills, contact, etc. -->
+  </main>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped></style>
