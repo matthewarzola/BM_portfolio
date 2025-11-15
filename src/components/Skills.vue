@@ -2,26 +2,18 @@
 import { ref } from 'vue'
 
 const skills = ref([
-  { name: 'HTML5', level: 'Advanced' },
-  { name: 'CSS3', level: 'Advanced' },
-  { name: 'SASS', level: 'Intermediate' },
-  { name: 'JavaScript', level: 'Advanced' },
-  { name: 'Vue.js', level: 'Intermediate' },
-  { name: 'Figma', level: 'Advanced' },
-  { name: 'Adobe XD', level: 'Intermediate' },
-  { name: 'Git & GitHub', level: 'Advanced' },
+  'HTML5', 'CSS3', 'SASS', 'Tailwind CSS', 'UIKit', 'Figma', 'Git', 'Github', 'SQL', 'Python', 'Linux'
 ])
-
 </script>
 
 <template>
-  <section class="bg-gray-800 text-white p-6 rounded-lg shadow-md">
-    <h2 class="text-2xl font-semibold mb-4">Technical Skills</h2>
-    <ul class="list-disc pl-5">
-      <li v-for="skill in skills" :key="skill.name">
-        {{ skill.name }} - {{ skill.level }}
-      </li>
-    </ul>
+  <section class="mt-12">
+    <h2 class="text-xl font-semibold mb-4">Technical Skills</h2>
+    <div class="flex flex-wrap gap-2">
+      <span v-for="skill in skills" :key="skill" class="bg-gray-700 text-white px-4 py-1 rounded-full text-sm font-medium">
+        {{ skill }}
+      </span>
+    </div>
   </section>
 </template>
 
