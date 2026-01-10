@@ -11,9 +11,9 @@ import DefaultLayout from '../components/layouts/DefaultLayout.vue'
 <template>
   <DefaultLayout>
       <Hero />
-      <Timeline />
+      <!-- <Timeline />
       <Skills />
       <Projects />
-      <Certificates />
+      <Certificates /> -->
   </DefaultLayout>
 </template>
