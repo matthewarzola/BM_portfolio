@@ -1,23 +1,19 @@
 <script setup>
-import Hero from '../components/Hero.vue'
-import Timeline from '../components/Timeline.vue'
-import Skills from '../components/Skills.vue'
-import Projects from '../components/Projects.vue'
-import Certificates from '../components/Certificates.vue'
-import Footer from '../components/Footer.vue'
+import Hero from '../components/sections/Hero.vue'
+import Timeline from '../components/sections/Timeline.vue'
+import Skills from '../components/sections/Skills.vue'
+import Projects from '../components/sections/Projects.vue'
+import Certificates from '../components/sections/Certificates.vue'
+import Footer from '../components/layouts/Footer.vue'
+import DefaultLayout from '../components/layouts/DefaultLayout.vue'
 </script>
 
 <template>
-  <div class="text-white">
-    <Hero />
-    <Timeline />
-    <Skills />
-    <Projects />
-    <Certificates />
-    <Footer />
-  </div>
+  <DefaultLayout>
+      <Hero />
+      <Timeline />
+      <Skills />
+      <Projects />
+      <Certificates />
+  </DefaultLayout>
 </template>
-
-<style scoped>
-/* Add any specific styles for the Home view here */
-</style>

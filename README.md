@@ -107,3 +107,15 @@ For each project include:
 - Projects
 - CTA with contact me
 - Footer
+
+
+
+
+
+
+
+
+components folders is just the components
+- layouts
+- ui
+views folder is the page
