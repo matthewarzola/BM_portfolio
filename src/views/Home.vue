@@ -8,7 +8,7 @@ import Footer from '../components/Footer.vue'
 </script>
 
 <template>
-  <div class="bg-gray-900 text-white">
+  <div class="text-white">
     <Hero />
     <Timeline />
     <Skills />

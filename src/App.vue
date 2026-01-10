@@ -9,7 +9,7 @@ import Footer from './components/Footer.vue'
 </script>
 
 <template>
-  <div class="bg-black min-h-screen font-sans">
+  <div class="bg-zinc-50 dark:bg-zinc-900 min-h-screen font-sans">
     <Navbar />
     <main class="pt-24 max-w-5xl mx-auto px-4">
       <Hero />
@@ -18,7 +18,7 @@ import Footer from './components/Footer.vue'
       <Projects />
       <Certificates />
     </main>
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 
