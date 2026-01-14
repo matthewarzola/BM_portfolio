@@ -9,11 +9,11 @@ import DefaultLayout from '../components/layouts/DefaultLayout.vue'
 </script>
 
 <template>
-  <DefaultLayout>
-      <Hero />
-      <!-- <Timeline />
-      <Skills />
-      <Projects />
-      <Certificates /> -->
-  </DefaultLayout>
+	<DefaultLayout>
+		<Hero />
+		<Timeline />
+		<!-- <Skills /> -->
+		<Projects />
+		<Certificates />
+	</DefaultLayout>
 </template>

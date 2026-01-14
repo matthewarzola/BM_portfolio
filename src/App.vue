@@ -5,6 +5,6 @@ import CursorLight from "./components/ui/CursorLight.vue";
 
 <template>
   <router-view />
-  <CursorLight />
+  <!-- <CursorLight /> -->
   <Home />
 </template>

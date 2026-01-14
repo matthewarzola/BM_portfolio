@@ -28,10 +28,12 @@ brand color
 ## 2. Page Sections and Content
 
 ### **Hero / Introduction**
-- Short headline: "Hi, I'm Benedict — a UI/UX Engineer crafting clean, responsive interfaces."
-- revise yung crafting cleean, respobsive interfaces
+- Short headline: 
+    - "Hi, I'm Benedict — a UI/UX Software Engineer with a growing passion for Cybersecurity."
 - Subtext: 1–2 sentences describing skill focus
+    - With a strong foundation in UI/UX engineering, I’m now expanding into cybersecurity through continuous learning, labs, and real-world security practices.
 - Optional photo or avatar
+
 - Call-to-action buttons: "Resume" and "Contact Me(eto mag direct sa contact section)"
 
 

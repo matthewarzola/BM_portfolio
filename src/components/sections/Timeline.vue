@@ -1,102 +1,83 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
+import Skills from '@/components/sections/Skills.vue'
+const openPanel = ref(1);
 
-const experience = ref([
-  {
-    title: 'UI/UX Designer',
-    company: 'Tech Solutions Inc.',
-    date: 'June 2021 - Present',
-    description: 'Responsible for designing user-friendly interfaces and enhancing user experience across various applications.'
-  },
-  {
-    title: 'Junior UI/UX Designer',
-    company: 'Creative Agency',
-    date: 'January 2020 - May 2021',
-    description: 'Assisted in the design and development of web applications, focusing on user research and usability testing.'
-  }
-])
-
-const education = ref([
-  {
-    degree: 'Bachelor of Science in Computer Science',
-    institution: 'University of Technology',
-    date: '2016 - 2020',
-    description: 'Focused on software development and user experience design.'
-  },
-  {
-    degree: 'Diploma in Graphic Design',
-    institution: 'Design Institute',
-    date: '2014 - 2016',
-    description: 'Studied graphic design principles and digital media.'
-  }
-])
+function togglePanel(panelNumber) {
+  openPanel.value = openPanel.value === panelNumber ? null : panelNumber;
+}
 </script>
 
 <template>
-  <section class="timeline">
-    <h2 class="text-2xl font-semibold mb-4">Experience & Education</h2>
-    <div class="tabs">
-      <button @click="activeTab = 'experience'" :class="{ active: activeTab === 'experience' }">Experience</button>
-      <button @click="activeTab = 'education'" :class="{ active: activeTab === 'education' }">Education</button>
+  <div class="space-y-4 w-full max-w-4xl mx-auto">
+    <!-- Panel 1 -->
+    <div class="border border-zinc-500 rounded-lg shadow-sm">
+      <button
+        @click="togglePanel(1)"
+        class="w-full flex justify-between items-center p-4 text-left font-medium hover:bg-zinc-800 rounded-t-lg"
+      >
+        <span class=" text-lg">Experience</span>
+        <svg
+          :class="{ 'rotate-180': openPanel === 1 }"
+          class="w-5 h-5 transition-transform duration-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+      <div v-show="openPanel === 1" class="p-4 border-t border-zinc-500">
+        <p class="text-sm">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
     </div>
-    <div v-if="activeTab === 'experience'">
-      <ul>
-        <li v-for="item in experience" :key="item.title" class="timeline-item">
-          <h3>{{ item.title }} at {{ item.company }}</h3>
-          <span>{{ item.date }}</span>
-          <p>{{ item.description }}</p>
-        </li>
-      </ul>
+
+    <!-- Panel 2 -->
+    <div class="border border-zinc-500 rounded-lg shadow-sm">
+      <button
+        @click="togglePanel(2)"
+        class="w-full flex justify-between items-center p-4 text-left font-medium hover:bg-zinc-800 rounded-t-lg"
+      >
+        <span class=" text-lg">Education</span>
+        <svg
+          :class="{ 'rotate-180': openPanel === 2 }"
+          class="w-5 h-5 transition-transform duration-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+      <div v-show="openPanel === 2" class="p-4 border-t border-zinc-500">
+        <p class="text-sm">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
     </div>
-    <div v-else>
-      <ul>
-        <li v-for="item in education" :key="item.degree" class="timeline-item">
-          <h3>{{ item.degree }} from {{ item.institution }}</h3>
-          <span>{{ item.date }}</span>
-          <p>{{ item.description }}</p>
-        </li>
-      </ul>
+
+    <!-- Panel 3 -->
+    <div class="border border-zinc-500 rounded-lg shadow-sm">
+      <button
+        @click="togglePanel(3)"
+        class="w-full flex justify-between items-center p-4 text-left font-medium hover:bg-zinc-800 rounded-t-lg"
+      >
+        <span class="text-lg">Technical Skills</span>
+        <svg
+          :class="{ 'rotate-180': openPanel === 3 }"
+          class="w-5 h-5 transition-transform duration-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+      <div v-show="openPanel === 3" class="p-4 border-t border-zinc-500">
+        <Skills />
+      </div>
     </div>
-  </section>
+  </div>
 </template>
-
-<style scoped>
-.timeline {
-  background-color: #1e1e1e;
-  color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.tabs {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.tabs button {
-  background: none;
-  border: none;
-  color: #f9f9f9;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.tabs button.active {
-  border-bottom: 2px solid #4a90e2;
-}
-
-.timeline-item {
-  margin-bottom: 20px;
-}
-
-.timeline-item h3 {
-  font-size: 1.2em;
-  margin: 0;
-}
-
-.timeline-item span {
-  display: block;
-  font-size: 0.9em;
-  color: #bbb;
-}
-</style>

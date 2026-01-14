@@ -29,7 +29,9 @@ function toggleTheme() {
 </script>
 
 <template>
-    <button @click="toggleTheme" class="hover:text-zinc-400" aria-label="Toggle theme">
+    <button @click="toggleTheme"
+        class=" text-indigo-300 hover:text-indigo-300/50 dark:text-orange-300 dark:hover:text-orange-300/50"
+        aria-label="Toggle theme">
         <SunIcon v-if="isDark" class="size-5" />
         <MoonIcon v-else class="size-5" />
     </button>

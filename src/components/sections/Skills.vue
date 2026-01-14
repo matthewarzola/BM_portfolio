@@ -7,8 +7,7 @@ const skills = ref([
 </script>
 
 <template>
-  <section class="mt-12">
-    <h2 class="text-xl font-semibold mb-4">Technical Skills</h2>
+  <section class="">
     <div class="flex flex-wrap gap-2">
       <span v-for="skill in skills" :key="skill" class="bg-gray-700 text-white px-4 py-1 rounded-full text-sm font-medium">
         {{ skill }}
