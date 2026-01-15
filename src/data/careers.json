@@ -3,7 +3,7 @@
     {
       "name": "QSTRIKE INNOVATION PHILS. OPC",
       "href": "https://qstrikeinnovations.ph/",
-      "logo": "./src/assets/icons/Qxlogo.png",
+      "logo": "/icons/Qxlogo.png",
       "positions": [
         {
           "title": "Associate Software Engineer ",
@@ -19,7 +19,7 @@
     {
       "name": "QSTRIKE INNOVATION PHILS. OPC",
       "href": "https://qstrikeinnovations.ph/",
-      "logo": "./src/assets/icons/Qxlogo.png",
+      "logo": "/icons/Qxlogo.png",
       "positions": [
         {
           "title": "UI/UX Software Engineer (Intern)",

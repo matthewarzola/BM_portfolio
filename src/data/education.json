@@ -3,7 +3,7 @@
     {
       "name": "Polytechnic University of the Philippines Biñan Campus",
       "href": "https://www.pup.edu.ph/binan/",
-      "logo": "./src/assets/icons/PUP.jpg",
+      "logo": "/icons/PUP.jpg",
       "positions": [
         {
           "title": "Bachelor of Science in Information Technology",
@@ -20,7 +20,7 @@
     {
       "name": "Biñan Integrated National High School",
       "href": "https://www.facebook.com/DepEdTayoBINHS301230/",
-      "logo": "./src/assets/icons/BINHS.jpg",
+      "logo": "/icons/BINHS.jpg",
       "positions": [
         {
           "title": "Accountancy Business and Management",
