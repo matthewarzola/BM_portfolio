@@ -1,6 +1,6 @@
 <script setup>
 import Hero from '../components/sections/Hero.vue'
-import Timeline from '../components/sections/Timeline.vue'
+import Timeline from '../components/sections/ProfileInfo.vue'
 import Skills from '../components/sections/Skills.vue'
 import Projects from '../components/sections/Projects.vue'
 import Certificates from '../components/sections/Certificates.vue'
@@ -13,7 +13,7 @@ import DefaultLayout from '../components/layouts/DefaultLayout.vue'
 		<Hero />
 		<Timeline />
 		<!-- <Skills /> -->
-		<Projects />
-		<Certificates />
+		<!-- <Projects />
+		<Certificates /> -->
 	</DefaultLayout>
 </template>

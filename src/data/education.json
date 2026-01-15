@@ -1,0 +1,33 @@
+{
+  "education": [
+    {
+      "name": "Polytechnic University of the Philippines Biñan Campus",
+      "href": "https://www.pup.edu.ph/binan/",
+      "logo": "./src/assets/icons/PUP.jpg",
+      "positions": [
+        {
+          "title": "Bachelor of Science in Information Technology",
+          "start": "July 2020",
+          "end": "October 2024",
+          "description": [
+            "Magna Cum Laude A.Y. 2023-2024",
+            "President’s List Academic Achievement Award",
+            "Video Editor of Central Student Council - Biñan Campus"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Biñan Integrated National High School",
+      "href": "https://www.facebook.com/DepEdTayoBINHS301230/",
+      "logo": "./src/assets/icons/BINHS.jpg",
+      "positions": [
+        {
+          "title": "Accountancy Business and Management",
+          "start": "July 2018",
+          "end": "October 2020"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "career": [
+    {
+      "name": "QSTRIKE INNOVATION PHILS. OPC",
+      "href": "https://qstrikeinnovations.ph/",
+      "logo": "./src/assets/icons/Qxlogo.png",
+      "positions": [
+        {
+          "title": "Associate Software Engineer ",
+          "start": "July 2024",
+          "description": [
+            "Investigated and resolved frontend and functional issues, reducing recurring UI defects and improving application stability through systematic root-cause analysis and validation of fixes",
+            "Debugged frontend and functional issues using Vue.js, resolving UI inconsistencies and improving cross-platform stability and overall user experience",
+            "Conducted UI and functional audits to identify broken, inconsistent, or potentially vulnerable components, supporting QA efforts and maintaining reliable, user-ready builds"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "QSTRIKE INNOVATION PHILS. OPC",
+      "href": "https://qstrikeinnovations.ph/",
+      "logo": "./src/assets/icons/Qxlogo.png",
+      "positions": [
+        {
+          "title": "UI/UX Software Engineer (Intern)",
+          "start": "March 2024",
+          "end": "June 2024",
+          "description": [
+            "Created wireframes, mockups, and interactive prototypes in Figma, bridging design and frontend to deliver implementable UI solutions that accelerated frontend development",
+            "Assisted in debugging UI and functional issues, improving cross-browser compatibility and reducing user-reported interface problems",
+            "Developed responsive, reusable UI components using HTML, SCSS, and UIkit, enabling faster feature implementation and simplifying frontend integration"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -15,7 +15,3 @@ const skills = ref([
     </div>
   </section>
 </template>
-
-<style scoped>
-/* Add any specific styles for the Skills component here */
-</style>

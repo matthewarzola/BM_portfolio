@@ -32,6 +32,8 @@ brand color
     - "Hi, I'm Benedict — a UI/UX Software Engineer with a growing passion for Cybersecurity."
 - Subtext: 1–2 sentences describing skill focus
     - With a strong foundation in UI/UX engineering, I’m now expanding into cybersecurity through continuous learning, labs, and real-world security practices.
+    OR
+    - Leveraging a foundation in frontend development and application audits to build more resilient, secure systems. Currently focused on transitioning into SOC analysis to monitor and defend against real-world digital threats.
 - Optional photo or avatar
 
 - Call-to-action buttons: "Resume" and "Contact Me(eto mag direct sa contact section)"
@@ -121,3 +123,14 @@ components folders is just the components
 - layouts
 - ui
 views folder is the page
+
+
+- Home
+    - Hero.vue
+- About
+    - ProfileInfo.vue 
+- Works
+    - Projects.vue
+- Contact
+    - Contact.vue
+    

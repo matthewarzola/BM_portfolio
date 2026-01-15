@@ -6,7 +6,7 @@ const showResume = ref(false);
 </script>
 
 <template>
-	<article class="relative mt-20 flex flex-col gap-16 pb-16 ">
+	<article class="relative mt-20 flex flex-col gap-16 pb-15 ">
 		<section
 			class="relative flex flex-col items-start gap-10 md:flex-row-reverse md:items-stretch md:justify-between">
 			<div class="relative grid h-[233px] w-[175px] place-items-center ">
@@ -18,13 +18,12 @@ const showResume = ref(false);
 					Benedict Matthew Arzola
 				</h1>
 				<!-- <p class="mt-3 whitespace-nowrap sm:text-base text-sm font-medium uppercase tracking-widest  "> -->
-        <p class="mt-2 max-w-lg text-sm text-wrap font-medium leading-relaxed tracking-widest">
+        <p class="mt-2 max-w-lg text-sm text-wrap font-medium uppercase leading-relaxed tracking-widest">
 					UI/UX Software Engineer · Cybersecurity Enthusiast
 				</p>
 				<p
 					class="mt-5 max-w-lg text-sm text-wrap leading-relaxed text-zinc-500 dark:text-zinc-400 sm:text-base">
-					With a strong foundation in UI/UX engineering, I’m now expanding into cybersecurity
-					through continuous learning, labs, and real-world security practices.
+          <b>UI/UX Engineer</b> by profession, <b>Cybersecurity</b> by passion. Focused on transitioning into SOC analysis to monitor and defend against real-world digital threats.
 				</p>
 				<section class="mt-6 flex flex-wrap items-center gap-4">
 					<button @click="showResume = !showResume"
