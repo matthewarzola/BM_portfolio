@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+	@apply bg-zinc-50 dark:bg-zinc-900 min-h-screen font-sans text-zinc-900 dark:text-zinc-50;
+}
+
+@theme {
+	/* ... */
+}
+
+/* Navigation link styles */
+.nav-link {
+	@apply relative px-3 py-2 text-base font-light text-zinc-900 dark:text-zinc-50 hover:text-zinc-400 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sky-500 dark:after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full;
+}
+
+.nav-link.active {
+	@apply text-sky-500 hover:text-sky-500/50 dark:text-red-500 dark:hover:text-red-500/50;
+}
+
+.logo {
+	@apply text-zinc-900 dark:text-zinc-50 hover:text-zinc-400;
+}
+
+.logo.active {
+	@apply text-sky-500 hover:text-sky-500/50 dark:text-red-500 dark:hover:text-red-500/50;
+}
+
+.logo-letter {
+	@apply inline-block translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100;
+}

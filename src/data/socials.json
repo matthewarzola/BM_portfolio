@@ -1,0 +1,19 @@
+{
+    "socials": [
+        {
+            "name": "LinkedIn",
+            "href": "https://www.linkedin.com/in/benedict-matthew-arzola/",
+            "icon": "Linkedin"
+        },
+        {
+            "name": "GitHub",
+            "href": "https://github.com/matthewarzola",
+            "icon": "Github"
+        },
+        {
+            "name": "Email",
+            "href": "mailto:benedicy12@gmail.com",
+            "icon": "Mail"
+        }
+    ]
+}
