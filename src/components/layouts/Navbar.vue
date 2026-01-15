@@ -9,7 +9,7 @@ import ThemeToggle from '@/components/ui/ThemeToggle.vue'
 		<div class="mx-auto max-w-4xl px-2 sm:px-6 lg:px-8">
 			<div class="relative flex h-16 items-center justify-between">
 				<div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
-					<button type="button" command="--toggle" commandfor="mobile-menu" 
+					<button type="button" 
 						class="relative inline-flex items-center justify-center rounded-md p-2 hover:text-zinc-400 focus:outline-2 focus:-outline-offset-1 dark:focus:outline-red-500 focus:outline-sky-500">
 						<Bars3Icon class="size-6" />
 					</button>
