@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Biñan Analytica Dashboard",
+    "description": "Designed and implemented a descriptive analytics dashboard presenting charts and graphs for easy visualization and decision-making",
+    "image": "/public/images/binan-proj.png",
+    "link": "#",
+    "status": "maintenance"
+  },
+  {
+    "title": "Omnifood Project",
+    "description": "A fictional food-delivery website a personalized meal plans and meal delivery, while teaching the essentials of a responsive, real-world layout without unnecessary complexity.",
+    "image": "/public/images/omnifood-proj.png",
+    "link": "https://omnifood-arzola.netlify.app/",
+    "status": "online"
+  }
+]
