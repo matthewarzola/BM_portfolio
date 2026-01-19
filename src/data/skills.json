@@ -1,0 +1,64 @@
+{
+    "skills": [
+        {
+            "name": "HTML5",
+            "icon": "devicon-plain:html5-wordmark",
+            "level": "expert"
+        },
+        {
+            "name": "CSS3",
+            "icon": "devicon-plain:css3-wordmark",
+            "level": "expert"
+        },
+        {
+            "name": "JavaScript",
+            "icon": "devicon-plain:javascript",
+            "level": "intermediate"
+        },
+        {
+            "name": "Sass",
+            "icon": "famicons:logo-sass",
+            "level": "intermediate"
+        },
+        {
+            "name": "Tailwind CSS",
+            "icon": "flowbite:tailwind-solid",
+            "level": "intermediate"
+        },
+        {
+            "name": "UIKit",
+            "icon": "simple-icons:uikit",
+            "level": "expert"
+        },
+        {
+            "name": "Figma",
+            "icon": "devicon-plain:figma",
+            "level": "expert"
+        },
+        {
+            "name": "Git",
+            "icon": "devicon-plain:git",
+            "level": "expert"
+        },
+        {
+            "name": "Github",
+            "icon": "flowbite:github-solid",
+            "level": "expert"
+        },
+        {
+            "name": "SQL",
+            "icon": "fontisto:mysql",
+            "level": "beginner"
+        },
+        {
+            "name": "Python",
+            "icon": "devicon-plain:python",
+            "level": "beginner"
+        },
+        {
+            "name": "Linux",
+            "icon": "devicon-plain:linux",
+            "level": "beginner"
+        }
+    ]
+}

@@ -3,17 +3,17 @@
         {
             "name": "LinkedIn",
             "href": "https://www.linkedin.com/in/benedict-matthew-arzola/",
-            "icon": "Linkedin"
+            "icon": "lucide:linkedin"
         },
         {
             "name": "GitHub",
             "href": "https://github.com/matthewarzola",
-            "icon": "Github"
+            "icon": "lucide:github"
         },
         {
             "name": "Email",
             "href": "mailto:benedicy12@gmail.com",
-            "icon": "Mail"
+            "icon": "lucide:mail"
         }
     ]
 }

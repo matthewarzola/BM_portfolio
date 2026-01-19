@@ -28,8 +28,8 @@ const projects = ref([
 
 <template>
   <section class="projects">
-    <h2 class="text-2xl font-semibold mb-4">Featured Projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <h2 class="text-2xl font-semibold mb-4">Featured Works</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
       <div v-for="project in projects" :key="project.title" class="card">
         <img :src="project.image" alt="Screenshot of {{ project.title }}" class="w-full h-48 object-cover rounded-t" />
         <div class="p-4">

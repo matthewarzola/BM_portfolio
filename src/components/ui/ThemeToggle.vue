@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { SunIcon, MoonIcon, Bars3Icon } from '@heroicons/vue/24/outline'
 
 const isDark = ref(true)
 
 onMounted(() => {
-    // load saved theme
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme === 'light') {
         isDark.value = false
@@ -30,9 +28,9 @@ function toggleTheme() {
 
 <template>
     <button @click="toggleTheme"
-        class=" text-indigo-300 hover:text-indigo-300/50 dark:text-orange-300 dark:hover:text-orange-300/50"
+        class=" text-indigo-500 hover:text-indigo-500 dark:text-orange-300 dark:hover:text-orange-300/50"
         aria-label="Toggle theme">
-        <SunIcon v-if="isDark" class="size-5" />
-        <MoonIcon v-else class="size-5" />
+        <Icon v-if="isDark" icon="lucide:sun" class="size-5" />
+        <Icon v-else icon="lucide:moon" class="size-5" />
     </button>
 </template>

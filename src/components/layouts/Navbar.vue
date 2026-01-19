@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Bars3Icon } from '@heroicons/vue/24/outline'
 import ThemeToggle from '@/components/ui/ThemeToggle.vue'
 </script>
 
@@ -11,7 +10,7 @@ import ThemeToggle from '@/components/ui/ThemeToggle.vue'
 				<div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
 					<button type="button" 
 						class="relative inline-flex items-center justify-center rounded-md p-2 hover:text-zinc-400 focus:outline-2 focus:-outline-offset-1 dark:focus:outline-red-500 focus:outline-sky-500">
-						<Bars3Icon class="size-6" />
+						<Icon icon="lucide:menu" class="size-6" />
 					</button>
 				</div>
 
