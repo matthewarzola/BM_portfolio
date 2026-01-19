@@ -1,5 +1,46 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import ThemeToggle from '@/components/ui/ThemeToggle.vue'
+
+// Mobile menu state
+const mobileMenuOpen = ref(false)
+
+// Toggle mobile menu
+function toggleMobileMenu() {
+	mobileMenuOpen.value = !mobileMenuOpen.value
+}
+
+// Smooth scroll for anchor links
+function scrollToSection(event: Event, href: string) {
+	event.preventDefault()
+	if (href === '#') {
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+	} else if (href.startsWith('#')) {
+		const section = document.querySelector(href)
+		section?.scrollIntoView({ behavior: 'smooth' })
+	}
+	// Close mobile menu after clicking
+	if (mobileMenuOpen.value) mobileMenuOpen.value = false
+}
+
+// Sticky header
+const isSticky = ref(false)
+onMounted(() => {
+	const heroSection = document.querySelector('.section-hero')
+	if (!heroSection) return
+
+	const observer = new IntersectionObserver(
+		([entry]) => {
+			isSticky.value = !entry.isIntersecting
+		},
+		{
+			root: null,
+			threshold: 0,
+			rootMargin: '-80px',
+		}
+	)
+	observer.observe(heroSection)
+})
 </script>
 
 
@@ -8,9 +49,9 @@ import ThemeToggle from '@/components/ui/ThemeToggle.vue'
 		<div class="mx-auto max-w-4xl px-2 sm:px-6 lg:px-8">
 			<div class="relative flex h-16 items-center justify-between">
 				<div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
-					<button type="button" 
+					<button type="button" @click="toggleMobileMenu"
 						class="relative inline-flex items-center justify-center rounded-md p-2 hover:text-zinc-400 focus:outline-2 focus:-outline-offset-1 dark:focus:outline-red-500 focus:outline-sky-500">
-						<Icon icon="lucide:menu" class="size-6" />
+						<Icon :icon="mobileMenuOpen ? 'lucide:x' : 'lucide:menu'" class="size-6" />
 					</button>
 				</div>
 
@@ -29,8 +70,7 @@ import ThemeToggle from '@/components/ui/ThemeToggle.vue'
 						</div>
 						<!-- Name -->
 						<span
-						class="flex overflow-hidden logo active font-semibold text-sm tracking-wide hidden sm:inline-flex"
-						>
+							class="flex overflow-hidden logo active font-semibold text-sm tracking-wide hidden sm:inline-flex">
 							<span class="flex">
 								<span class="logo-letter delay-[0ms]">B</span>
 								<span class="logo-letter delay-[50ms]">e</span>
@@ -75,7 +115,16 @@ import ThemeToggle from '@/components/ui/ThemeToggle.vue'
 				</div>
 			</div>
 		</div>
+		<div v-show="mobileMenuOpen" class="md:hidden backdrop-blur-md">
+			<nav class="flex flex-col gap-4 px-4 py-4">
+				<a href="#how" class="nav-link">Home</a>
+				<a href="#meals" class="nav-link">About</a>
+				<a href="#testimonials" class="nav-link">Works</a>
+				<a href="#pricing" class="nav-link">Contact</a>
+				<div class="flex justify-center">
+					<ThemeToggle />
+				</div>
+			</nav>
+		</div>
 	</nav>
 </template>
-
-
