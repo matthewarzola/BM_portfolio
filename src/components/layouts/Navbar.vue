@@ -119,10 +119,10 @@ onMounted(() => {
 		<!-- Mobile menu -->
 		<div v-if="mobileMenuOpen" class="block sm:hidden backdrop-blur-md bg-zinc-50 dark:bg-zinc-900/90">
 			<nav class="flex flex-col gap-4 px-4 py-4">
-				<a href="#how" class="nav-link">Home</a>
-				<a href="#meals" class="nav-link">About</a>
-				<a href="#testimonials" class="nav-link">Works</a>
-				<a href="#pricing" class="nav-link">Contact</a>
+				<a href="#home" class="nav-link">Home</a>
+				<a href="#about" class="nav-link">About</a>
+				<a href="#works" class="nav-link">Works</a>
+				<a href="#contact" class="nav-link">Contact</a>
 				<div class="flex justify-center">
 					<ThemeToggle />
 				</div>
