@@ -51,7 +51,7 @@ onMounted(() => {
 				<div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
 					<button type="button" @click="toggleMobileMenu"
 						class="relative inline-flex items-center justify-center rounded-md p-2 hover:text-zinc-400 focus:outline-2 focus:-outline-offset-1 dark:focus:outline-red-500 focus:outline-sky-500">
-						<Icon :icon="mobileMenuOpen ? 'lucide:x' : 'lucide:menu'" class="size-6" />
+						<Icon :icon="mobileMenuOpen ? 'lucide:x' : 'lucide:menu'" class="w-6 h-6" />
 					</button>
 				</div>
 
@@ -115,7 +115,9 @@ onMounted(() => {
 				</div>
 			</div>
 		</div>
-		<div v-show="mobileMenuOpen" class="md:hidden backdrop-blur-md">
+
+		<!-- Mobile menu -->
+		<div v-if="mobileMenuOpen" class="block sm:hidden backdrop-blur-md bg-zinc-50 dark:bg-zinc-900/90">
 			<nav class="flex flex-col gap-4 px-4 py-4">
 				<a href="#how" class="nav-link">Home</a>
 				<a href="#meals" class="nav-link">About</a>
