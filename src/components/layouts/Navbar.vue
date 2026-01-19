@@ -10,36 +10,10 @@ function toggleMobileMenu() {
 	mobileMenuOpen.value = !mobileMenuOpen.value
 }
 
-// Smooth scroll for anchor links
-function scrollToSection(event: Event, href: string) {
-	event.preventDefault()
-	if (href === '#') {
-		window.scrollTo({ top: 0, behavior: 'smooth' })
-	} else if (href.startsWith('#')) {
-		const section = document.querySelector(href)
-		section?.scrollIntoView({ behavior: 'smooth' })
-	}
-	// Close mobile menu after clicking
-	if (mobileMenuOpen.value) mobileMenuOpen.value = false
-}
+const mounted = ref(false)
 
-// Sticky header
-const isSticky = ref(false)
 onMounted(() => {
-	const heroSection = document.querySelector('.section-hero')
-	if (!heroSection) return
-
-	const observer = new IntersectionObserver(
-		([entry]) => {
-			isSticky.value = !entry.isIntersecting
-		},
-		{
-			root: null,
-			threshold: 0,
-			rootMargin: '-80px',
-		}
-	)
-	observer.observe(heroSection)
+  mounted.value = true
 })
 </script>
 
@@ -51,7 +25,9 @@ onMounted(() => {
 				<div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
 					<button type="button" @click="toggleMobileMenu"
 						class="relative inline-flex items-center justify-center rounded-md p-2 hover:text-zinc-400 focus:outline-2 focus:-outline-offset-1 dark:focus:outline-red-500 focus:outline-sky-500">
-						<Icon :icon="mobileMenuOpen ? 'lucide:x' : 'lucide:menu'" class="w-6 h-6" />
+						<template v-if="mounted">
+							<Icon :icon="mobileMenuOpen ? 'lucide:x' : 'lucide:menu'" class="w-6 h-6" />
+						</template>
 					</button>
 				</div>
 
