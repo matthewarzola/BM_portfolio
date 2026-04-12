@@ -10,7 +10,7 @@ const showResume = ref(false);
 		<section
 			class="relative flex flex-col items-start gap-10 md:flex-row-reverse md:items-stretch md:justify-between">
 			<div class="relative grid h-[233px] w-[175px] place-items-center ">
-				<img src="/Users/qip-innovation/Desktop/training-plan/BM_portfolio/src/assets/images/me-1.jpg" alt=""
+				<img src="../assets/images/me-1.jpg" alt=""
 					class="w-full h-full object-cover rounded-xl" />
 			</div>
 			<div class="flex max-w-[320px] flex-col sm:max-w-full">
