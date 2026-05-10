@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Icon } from '@iconify/vue'
+
 import skillsData from '@/data/skills.json'
 
 const skills = ref(skillsData.skills)
@@ -30,7 +30,6 @@ function formatLevel(level: string | undefined) {
         class="relative group inline-flex items-center justify-center rounded-md px-2 py-2 text-sm font-medium gap-2 whitespace-nowrap"
         :class="getLevelColor(item.level)" 
       >
-        <Icon :icon="item.icon" class="size-5" aria-hidden="true" />
         <span>{{ item.name }}</span>
 
         <!-- Tooltip -->
