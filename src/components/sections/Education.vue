@@ -1,133 +1,167 @@
+<!-- Education.vue -->
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
-import { GraduationCap, Award } from "lucide-vue-next";
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import { GraduationCap, Award, ChevronRight } from "lucide-vue-next";
 
-const courses = [
-  "Human-Computer Interaction", "Network Security", "Cryptography",
-  "User Research Methods", "Ethical Hacking", "Interactive Device Design",
-  "Data Structures & Algorithms", "Operating Systems",
+interface Education {
+	institution: string;
+	degree: string;
+	from: string;
+	to: string;
+	gpa?: string;
+	honor?: string;
+	courses?: string[];
+	highlights: string[];
+}
+
+const education: Education[] = [
+	{
+		institution: "Polytechnic University of the Philippines Biñan Campus",
+		degree: "Bachelor of Science in Information Technology",
+		from: "2020",
+		to: "2024",
+		gpa: "??/??",
+		honor: "Magna Cum Laude",
+		courses: [
+			"Human-Computer Interaction",
+			"Network Security",
+			"User Research Methods",
+			"Interactive Device Design",
+			"Data Structures & Algorithms",
+			"Operating Systems",
+		],
+		highlights: [
+			"Magna Cum Laude A.Y. 2023-2024",
+			"President's List Academic Achievement Award",
+			"Video Editor of Central Student Council - Biñan Campus",
+		],
+	},
+	{
+		institution: "Biñan Integrated National High School",
+		degree: "Accountancy Business and Management",
+		from: "2018",
+		to: "2020",
+		gpa: "",
+		honor: "",
+		courses: [
+		],
+		highlights: [
+			"Academic Achievement Award",
+			"Video Editor of ABM Organization",
+		],
+	},
 ];
 
-const highlights = [
-  "Senior thesis: 'Exploiting UX Patterns in Phishing Attacks — A Security-Centered UX Analysis'",
-  "Dean's List all 8 semesters",
-  "President, Human-Computer Interaction Student Society",
-];
+// ─── Scroll animation ─────────────────────────────────────────────────────────
 
-// Scroll-in-view logic (replaces useScrollInView hook)
 const sectionRef = ref<HTMLElement | null>(null);
 const inView = ref(false);
-
 let observer: IntersectionObserver | null = null;
 
 onMounted(() => {
-  observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) inView.value = true;
-    },
-    { threshold: 0.1 }
-  );
-  if (sectionRef.value) observer.observe(sectionRef.value);
+	observer = new IntersectionObserver(
+		([entry]) => {
+			if (entry.isIntersecting) {
+				inView.value = true;
+				observer?.disconnect();
+			}
+		},
+		{ threshold: 0.1 },
+	);
+	if (sectionRef.value) observer.observe(sectionRef.value);
 });
 
-onUnmounted(() => {
-  observer?.disconnect();
-});
+onBeforeUnmount(() => observer?.disconnect());
 </script>
 
 <template>
-  <section id="education" class="py-24 px-4 sm:px-6">
-    <div class="max-w-6xl mx-auto" ref="sectionRef">
+	<section id="education" class="py-24 px-4 sm:px-6">
+		<div ref="sectionRef" class="max-w-6xl mx-auto">
+			<!-- ── Header ──────────────────────────────────────────────────────── -->
+			<div class="mb-16 transition-all duration-700 ease-out"
+				:class="inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'">
+				<p class="text-primary text-sm font-mono tracking-[0.2em] uppercase mb-3 flex items-center gap-2">
+					<span class="inline-block w-4 h-px bg-primary" aria-hidden="true" />
+					education
+				</p>
 
-      <!-- Section Header -->
-      <Transition name="fade-up" appear>
-        <div v-if="inView" class="mb-16">
-          <p class="text-primary text-sm font-mono tracking-widest uppercase mb-2">/ education</p>
-          <h2 class="text-3xl sm:text-4xl font-bold text-foreground">Academic background</h2>
-        </div>
-      </Transition>
+				<h2 class="text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
+					Academic background
+				</h2>
+			</div>
 
-      <!-- Main Grid -->
-      <Transition name="fade-up-delay" appear>
-        <div
-          v-if="inView"
-          class="grid md:grid-cols-5 gap-8 items-start"
-          data-testid="card-education-0"
-        >
-          <!-- Degree Card -->
-          <div class="md:col-span-3 p-6 rounded-xl border border-border bg-card/60 backdrop-blur-sm hover:border-primary/30 transition-all">
-            <div class="flex items-start gap-4 mb-5">
-              <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                <GraduationCap class="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h3 class="text-foreground font-semibold text-lg leading-snug">
-                  University of California, Berkeley
-                </h3>
-                <p class="text-muted-foreground text-sm mt-0.5">
-                  B.S. Computer Science &amp; Cognitive Science (Double Major)
-                </p>
-              </div>
-            </div>
+			<!-- ── Education entries ──────────────────────────────────────────── -->
+			<div class="space-y-8">
+				<div v-for="(edu, i) in education" :key="edu.institution"
+					class="grid md:grid-cols-5 gap-6 items-start transition-all duration-700 ease-out" :class="inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+						" :style="{ transitionDelay: `${100 + i * 120}ms` }">
+					<!-- Degree card — col 1-3 -->
+					<article
+						class="md:col-span-3 p-6 rounded-xl border border-border bg-card/60 backdrop-blur-sm hover:border-primary/30 transition-all"
+						:style="{ transitionDelay: `${100 + i * 100}ms` }">
+						<!-- Institution row -->
+						<div class="flex items-start gap-4 mb-5">
+							<div
+								class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+								<GraduationCap class="w-6 h-6 text-primary" aria-hidden="true" />
+							</div>
 
-            <div class="flex flex-wrap gap-3 mb-5">
-              <span class="px-2.5 py-1 rounded-md bg-muted text-muted-foreground font-mono text-xs">2015 – 2019</span>
-              <span class="px-2.5 py-1 rounded-md bg-primary/10 text-primary font-mono text-xs">GPA 3.87 / 4.00</span>
-              <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-500 font-mono text-xs">Cum Laude</span>
-            </div>
+							<div>
+								<h3 class="text-foreground font-semibold text-lg leading-snug">
+									{{ edu.institution }}
+								</h3>
+								<p class="text-muted-foreground text-sm mt-0.5">
+									{{ edu.degree }}
+								</p>
+							</div>
+						</div>
 
-            <ul class="space-y-2">
-              <li
-                v-for="(highlight, j) in highlights"
-                :key="j"
-                class="flex gap-2 text-sm text-muted-foreground"
-              >
-                <span class="text-primary mt-1.5 shrink-0">›</span>
-                {{ highlight }}
-              </li>
-            </ul>
-          </div>
+						<!-- Meta pills -->
+						<div class="flex flex-wrap gap-2 mb-5">
+							<span class="px-2.5 py-1 rounded-md bg-muted/60 text-muted-foreground font-mono text-xs">
+								{{ edu.from }} – {{ edu.to }}
+							</span>
+							<span v-if="edu.gpa"
+								class="px-2.5 py-1 rounded-md bg-primary/10 text-primary font-mono text-xs border border-primary/20">
+								GPA {{ edu.gpa }}
+							</span>
+							<span v-if="edu.honor"
+								class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 font-mono text-xs border border-emerald-500/20">
+								{{ edu.honor }}
+							</span>
+						</div>
 
-          <!-- Coursework Card -->
-          <div class="md:col-span-2">
-            <div class="p-5 rounded-xl border border-border bg-card/60 backdrop-blur-sm">
-              <div class="flex items-center gap-2 mb-4">
-                <Award class="w-4 h-4 text-primary" />
-                <h4 class="text-sm font-semibold text-foreground">Relevant Coursework</h4>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  v-for="course in courses"
-                  :key="course"
-                  class="px-2.5 py-1 text-xs rounded-full border border-border bg-muted/50 text-muted-foreground hover:border-primary/30 hover:text-foreground transition-colors"
-                >
-                  {{ course }}
-                </span>
-              </div>
-            </div>
-          </div>
+						<!-- Highlights -->
+						<ul class="space-y-2.5" aria-label="Academic highlights">
+							<li v-for="(highlight, j) in edu.highlights" :key="j"
+								class="flex items-start gap-2.5 text-sm text-muted-foreground leading-relaxed">
+								<ChevronRight class="text-primary shrink-0 mt-[3px] size-3.5" aria-hidden="true" />
+								<span>{{ highlight }}</span>
+							</li>
+						</ul>
+					</article>
 
-        </div>
-      </Transition>
+					<!-- Coursework card — col 4-5 -->
+					<aside v-if="edu.courses?.length"
+						class="md:col-span-2 p-5 rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm hover:border-primary/40 hover:bg-card/80 transition-all duration-700 ease-out"
+						:class="inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+							" style="transition-delay: 200ms" aria-label="Relevant coursework">
+						<div class="flex items-center gap-2 mb-4">
+							<Award class="w-4 h-4 text-primary" aria-hidden="true" />
+							<h4 class="text-sm font-semibold text-foreground">
+								Relevant Coursework
+							</h4>
+						</div>
 
-    </div>
-  </section>
+						<div class="flex flex-wrap gap-2" role="list">
+							<span v-for="course in edu.courses" :key="course" role="listitem"
+								class="px-2.5 py-1 text-xs rounded-full border border-border/60 bg-muted/40 text-muted-foreground font-mono hover:border-primary/30 hover:text-foreground transition-colors duration-150 cursor-default">
+								{{ course }}
+							</span>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div>
+	</section>
 </template>
-
-<style scoped>
-.fade-up-enter-active {
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.fade-up-enter-from {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.fade-up-delay-enter-active {
-  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
-}
-.fade-up-delay-enter-from {
-  opacity: 0;
-  transform: translateY(30px);
-}
-</style>
