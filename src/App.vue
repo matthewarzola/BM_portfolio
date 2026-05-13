@@ -23,9 +23,9 @@ import Contact from '@/components/sections/Contact.vue'
         <Experience />
         <Education />
         <Skills />
-        <!-- <Projects />
+        <Projects />
         <Certifications />
-        <Contact /> -->
+        <Contact />
       </main>
       <Footer />
     </div>
