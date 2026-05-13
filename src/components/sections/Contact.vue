@@ -1,38 +1,254 @@
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { reactive, ref, onMounted, onBeforeUnmount } from "vue";
+import { Mail, Linkedin, Github, Send, ArrowRight } from "lucide-vue-next";
 
-const name = ref('')
-const email = ref('')
-const message = ref('')
+// ─── Types ────────────────────────────────────────────────────────────────────
 
-const submitForm = () => {
-  console.log('Form submitted:', { name: name.value, email: email.value, message: message.value });
+interface ContactLink {
+	label: string;
+	value: string;
+	href: string;
+	description: string;
+	icon: any;
 }
+
+interface ContactForm {
+	name: string;
+	email: string;
+	message: string;
+}
+
+// ─── Contact links ────────────────────────────────────────────────────────────
+
+const contactLinks: ContactLink[] = [
+	{
+		label: "Email",
+		value: "benedicy12@gmail.com",
+		href: "mailto:benedicy12@gmail.com",
+		description: "Best for project inquiries and collaboration",
+		icon: Mail,
+	},
+	{
+		label: "LinkedIn",
+		value: "linkedin.com/in/benedict-matthew-arzola/",
+		href: "https://www.linkedin.com/in/benedict-matthew-arzola/",
+		description: "Professional background and endorsements",
+		icon: Linkedin,
+	},
+	{
+		label: "GitHub",
+		value: "github.com/matthewarzola",
+		href: "https://github.com/matthewarzola",
+		description: "Open source work and code samples",
+		icon: Github,
+	},
+];
+
+// ─── Form state ───────────────────────────────────────────────────────────────
+
+const form = reactive<ContactForm>({ name: "", email: "", message: "" });
+
+type Status = "idle" | "sending" | "sent" | "error";
+const status = ref<Status>("idle");
+
+const handleSubmit = async () => {
+	status.value = "sending";
+	try {
+		// Replace with your real API call
+		await new Promise((res) => setTimeout(res, 800));
+		status.value = "sent";
+	} catch {
+		status.value = "error";
+	}
+};
+
+const reset = () => {
+	form.name = "";
+	form.email = "";
+	form.message = "";
+	status.value = "idle";
+};
+
+// ─── Scroll animation ─────────────────────────────────────────────────────────
+
+const sectionRef = ref<HTMLElement | null>(null);
+const inView = ref(false);
+let observer: IntersectionObserver | null = null;
+
+onMounted(() => {
+	observer = new IntersectionObserver(
+		([entry]) => {
+			if (entry.isIntersecting) {
+				inView.value = true;
+				observer?.disconnect();
+			}
+		},
+		{ threshold: 0.15 },
+	);
+	if (sectionRef.value) observer.observe(sectionRef.value);
+});
+
+onBeforeUnmount(() => observer?.disconnect());
+
+// ─── Shared input classes ─────────────────────────────────────────────────────
+
+const inputClass = `
+  w-full px-3 py-2.5 text-sm rounded-lg
+  border border-border bg-card/60 text-foreground
+  placeholder:text-muted-foreground/40
+  focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20
+  disabled:opacity-50 disabled:cursor-not-allowed
+  transition-colors duration-150
+`.trim();
 </script>
 
 <template>
-  <section class="contact bg-gray-800 text-white p-6 rounded-lg shadow-md">
-    <h2 class="text-2xl font-semibold mb-4">Contact Me</h2>
-    <form @submit.prevent="submitForm" class="space-y-4">
-      <div>
-        <label for="name" class="block">Name:</label>
-        <input type="text" id="name" v-model="name" class="border p-2 w-full bg-gray-700 text-white" required />
-      </div>
-      <div>
-        <label for="email" class="block">Email:</label>
-        <input type="email" id="email" v-model="email" class="border p-2 w-full bg-gray-700 text-white" required />
-      </div>
-      <div>
-        <label for="message" class="block">Message:</label>
-        <textarea id="message" v-model="message" class="border p-2 w-full bg-gray-700 text-white" required></textarea>
-      </div>
-      <button type="submit" class="bg-blue-500 text-white p-2 rounded">Send Message</button>
-    </form>
-  </section>
-</template>
+	<section id="contact" class="py-24 px-4 sm:px-6">
+		<div ref="sectionRef" class="max-w-6xl mx-auto">
+			<!-- ── Header ──────────────────────────────────────────────────────── -->
+			<div class="mb-16 transition-all duration-700 ease-out" :class="inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+				">
+				<p class="text-primary text-sm font-mono tracking-[0.2em] uppercase mb-3 flex items-center gap-2">
+					<span class="inline-block w-4 h-px bg-primary" aria-hidden="true" />
+					contact
+				</p>
 
-<style scoped>
-.contact {
-  margin-top: 2rem;
-}
-</style>
+				<h2 class="text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
+					Let's work together
+				</h2>
+
+				<p class="text-muted-foreground mt-3 max-w-xl leading-relaxed">
+					I'm open to freelance engagements, full-time opportunities, and
+					research collaborations at the intersection of design and security.
+				</p>
+			</div>
+
+			<!-- ── Grid ───────────────────────────────────────────────────────── -->
+			<div class="grid md:grid-cols-5 gap-10">
+				<!-- ── Contact links ─────────────────────────────────────────────── -->
+				<div class="md:col-span-2 space-y-3 transition-all duration-700" :class="inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'
+					">
+					<a v-for="(link, index) in contactLinks" :key="link.label" :href="link.href"
+						:aria-label="`${link.label}: ${link.value}`"
+						:target="link.href.startsWith('http') ? '_blank' : undefined" :rel="link.href.startsWith('http') ? 'noopener noreferrer' : undefined
+							" :data-testid="`link-contact-${link.label.toLowerCase()}`"
+						class="flex items-center gap-4 p-4 rounded-xl border border-border/60 bg-card/50 backdrop-blur-sm hover:border-primary/40 hover:bg-card/80 hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 group"
+						:class="inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+							" :style="{ transitionDelay: `${200 + index * 100}ms` }">
+						<!-- Icon -->
+						<div
+							class="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors duration-200">
+							<component :is="link.icon" class="w-4 h-4 text-primary" aria-hidden="true" />
+						</div>
+
+						<!-- Text -->
+						<div class="min-w-0 flex-1">
+							<p class="text-xs text-muted-foreground mb-0.5 font-medium tracking-wide uppercase">
+								{{ link.label }}
+							</p>
+							<p class="text-sm font-medium text-foreground truncate">
+								{{ link.value }}
+							</p>
+							<p class="text-xs text-muted-foreground/70 mt-0.5 leading-relaxed">
+								{{ link.description }}
+							</p>
+						</div>
+
+						<!-- Arrow -->
+						<ArrowRight
+							class="w-4 h-4 text-muted-foreground shrink-0 ml-auto group-hover:text-primary group-hover:translate-x-1 transition-all duration-200"
+							aria-hidden="true" />
+					</a>
+				</div>
+
+				<!-- ── Form panel ─────────────────────────────────────────────────── -->
+				<div class="md:col-span-3 transition-all duration-700" :class="inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-5'
+					" style="transition-delay: 150ms">
+					<!-- Success state -->
+					<Transition enter-active-class="transition-all duration-300 ease-out"
+						enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100">
+						<div v-if="status === 'sent'"
+							class="h-full min-h-64 flex items-center justify-center p-8 rounded-xl border border-primary/30 bg-primary/5">
+							<div class="text-center">
+								<div
+									class="w-14 h-14 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-4">
+									<Send class="w-6 h-6 text-primary" aria-hidden="true" />
+								</div>
+								<h3 class="text-foreground font-semibold text-lg mb-2">
+									Message sent!
+								</h3>
+								<p class="text-muted-foreground text-sm mb-5">
+									Thanks for reaching out — I'll respond within 48 hours.
+								</p>
+								<button @click="reset"
+									class="text-xs text-primary underline underline-offset-2 hover:text-primary/80 transition-colors">
+									Send another message
+								</button>
+							</div>
+						</div>
+					</Transition>
+
+					<!-- Error banner -->
+					<div v-if="status === 'error'"
+						class="mb-4 px-4 py-3 rounded-lg border border-destructive/40 bg-destructive/10 text-destructive text-sm"
+						role="alert">
+						Something went wrong — please try again or email me directly.
+					</div>
+
+					<!-- Contact form -->
+					<form v-if="status !== 'sent'" class="space-y-4" data-testid="form-contact" novalidate
+						@submit.prevent="handleSubmit">
+						<!-- Name + Email -->
+						<div class="grid sm:grid-cols-2 gap-4">
+							<div>
+								<label for="contact-name"
+									class="block text-xs font-medium text-muted-foreground mb-1.5">
+									Your name
+								</label>
+								<input id="contact-name" v-model="form.name" type="text" required autocomplete="name"
+									placeholder="Jane Smith" data-testid="input-contact-name"
+									:disabled="status === 'sending'" :class="inputClass" />
+							</div>
+
+							<div>
+								<label for="contact-email"
+									class="block text-xs font-medium text-muted-foreground mb-1.5">
+									Email address
+								</label>
+								<input id="contact-email" v-model="form.email" type="email" required
+									autocomplete="email" placeholder="jane@company.com"
+									data-testid="input-contact-email" :disabled="status === 'sending'"
+									:class="inputClass" />
+							</div>
+						</div>
+
+						<!-- Message -->
+						<div>
+							<label for="contact-message" class="block text-xs font-medium text-muted-foreground mb-1.5">
+								Message
+							</label>
+							<textarea id="contact-message" v-model="form.message" required rows="6"
+								placeholder="Tell me about the project or opportunity..."
+								data-testid="input-contact-message" :disabled="status === 'sending'"
+								:class="[inputClass, 'resize-none']" />
+						</div>
+
+						<!-- Submit -->
+						<button type="submit" data-testid="button-contact-submit" :disabled="status === 'sending'"
+							class="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium text-sm bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed shadow-[0_0_20px_rgba(6,182,212,0.2)] hover:shadow-[0_0_30px_rgba(6,182,212,0.35)] transition-all duration-200">
+							<svg v-if="status === 'sending'" class="w-4 h-4 animate-spin"
+								xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+								<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+									stroke-width="4" />
+								<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+							</svg>
+							<Send v-else class="w-4 h-4" aria-hidden="true" />
+
+							{{ status === "sending" ? "Sending…" : "Send Message" }}
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</template>
