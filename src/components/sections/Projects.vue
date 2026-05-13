@@ -59,6 +59,18 @@ const projects: Project[] = [
 		githubUrl: "#",
 		maintenance: false,
 	},
+	{
+		title: "Personal Portfolio",
+		description: "A self-designed portfolio showcasing my work at the intersection of UI/UX and cybersecurity — built from scratch with Vue and Tailwind, with a little help from AI.",
+		tags: ["Vue.js", "Tailwind CSS", "Web Design"],
+		category: "Web Development",
+		subcategory: "UI/UX Design",
+		icon: Code2,
+		color: "cyan",
+		liveUrl: "#",
+		githubUrl: "#",
+		maintenance: false,
+	},
 ];
 
 // ─── Style maps ───────────────────────────────────────────────────────────────
