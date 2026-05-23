@@ -284,3 +284,13 @@ const closeResume = () => {
 
 	</section>
 </template>
+
+<style>
+/* ── Tuning knobs ───────────────────────────────── */
+.relative {
+	--tilt-angle: 70deg;
+	/* how diagonal the orbits look */
+	perspective: 600px;
+	/* enables 3-D depth on children */
+}
+</style>
