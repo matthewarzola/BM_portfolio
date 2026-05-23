@@ -50,16 +50,38 @@ const form = reactive<ContactForm>({ name: "", email: "", message: "" });
 
 type Status = "idle" | "sending" | "sent" | "error";
 const status = ref<Status>("idle");
+const showSuccessModal = ref(false);
 
 const handleSubmit = async () => {
 	status.value = "sending";
 	try {
-		// Replace with your real API call
-		await new Promise((res) => setTimeout(res, 800));
-		status.value = "sent";
+		const res = await fetch("https://api.web3forms.com/submit", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				access_key: "652c7635-94d7-4fea-bba1-f49fda316377",
+				name: form.name,
+				email: form.email,
+				message: form.message,
+			}),
+		});
+
+		const data = await res.json();
+
+		if (data.success) {
+			status.value = "sent";
+			showSuccessModal.value = true;
+		} else {
+			status.value = "error";
+		}
 	} catch {
 		status.value = "error";
 	}
+};
+
+const closeSuccessModal = () => {
+	showSuccessModal.value = false;
+	reset();
 };
 
 const reset = () => {
@@ -167,22 +189,24 @@ const inputClass = `
 					<!-- Success state -->
 					<Transition enter-active-class="transition-all duration-300 ease-out"
 						enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100">
-						<div v-if="status === 'sent'"
-							class="h-full min-h-64 flex items-center justify-center p-8 rounded-xl border border-primary/30 bg-primary/5">
-							<div class="text-center">
+						<div v-if="showSuccessModal"
+							class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60"
+							@click.self="closeSuccessModal">
+							<div
+								class="w-full max-w-md rounded-3xl border border-border bg-card p-6 shadow-2xl text-center">
 								<div
-									class="w-14 h-14 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-4">
+									class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 border border-primary/20">
 									<Send class="w-6 h-6 text-primary" aria-hidden="true" />
 								</div>
-								<h3 class="text-foreground font-semibold text-lg mb-2">
+								<h3 class="text-2xl font-semibold text-foreground mb-2">
 									Message sent!
 								</h3>
-								<p class="text-muted-foreground text-sm mb-5">
+								<p class="text-sm text-muted-foreground mb-6">
 									Thanks for reaching out — I'll respond within 48 hours.
 								</p>
-								<button @click="reset"
-									class="text-xs text-primary underline underline-offset-2 hover:text-primary/80 transition-colors">
-									Send another message
+								<button @click="closeSuccessModal"
+									class="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors duration-200">
+									Close
 								</button>
 							</div>
 						</div>
